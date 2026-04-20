@@ -1,0 +1,185 @@
+---
+title: "Kmom04: ER konceptuell + Transaktioner"
+description: Påbörja ER-modellering och titta på konceptet med transaktioner.
+revision:
+  2026-02-08: (A, mos) Första versionen. 
+---
+
+import Figure from '@components/CustomFigure.astro';
+import YouTube from '@components/YouTube.astro';
+
+{/* TODO
+* 
+*/}
+
+Vi fortsätter ER-modellen med fokus på konceptuell modellering och vi påbörjar en större modelleringsövning.
+
+Vi tittar på hur transaktioner i en databas fungerar och vi tränar på SQL-kod för att hantera COMMIT och ROLLBACK i så kallade ACID transaktioner.
+
+Vi bygger vidare på ett terminalskript i CSharp och bygger en menydriven klient som kan flytta pengar mellan två konton databasen.
+
+
+
+## Läs & Studera
+
+Här kan du på egen hand studera och förbereda dig inför övningar och uppgifter.
+
+
+
+### Föreläsning
+
+Titta på följande inspelade föreläsningar. Föreläsningarna kan innehålla tips om läsanvisningar.
+
+1. [Transaktioner i databaser - ACID](/website/laromaterial/forelasning/transaktioner) ger en översikt till begreppet transaktioner i databasen och vad ACID innebär samt en liten utläggning om låsning, prestanda och tillförlitlighet i databasen.
+
+1. [ER-modellering - konceptuell modellering](/website/laromaterial/forelasning/er-modellering-konceptuell-modellering/) visar hur man kan rita en ER-modell via olika konstruktioner och introducerar en del begrepp om ER som underlättar ritandet.
+
+
+
+### Kurslitteratur
+
+Läs följande:
+
+
+
+__Transaktioner__
+
+1. Databasteknik
+    * Kap 24: Transaktioner
+
+1. [Boken har även en webbplats](http://www.databasteknik.se/webbkursen/) och vissa utdrag från boken finns där. Relevant för detta kmom är följande:
+    * [Transaktioner](http://www.databasteknik.se/webbkursen/transaktioner/index.html)
+
+Det finns ytterligare ett kapitel i boken som är relaterat till transaktioner, det går utanför kursens ram men läs vid intresse.
+
+1. Databasteknik
+    * Kap 25: Hur transaktioner hanteras inuti databashanteraren
+
+
+
+__ER-modellering__
+
+1. Databasteknik
+    * Kap 5: Relationsmodellen
+
+1. [Boken har även en webbplats](http://www.databasteknik.se/webbkursen/) och vissa utdrag från boken finns där. Relevant för detta kmom är följande:
+    * [ER-modellering i webbkursen](http://www.databasteknik.se/webbkursen/er/)
+
+
+
+### Artiklar
+
+Kika igenom följande artiklar.
+
+1. Fortsätt jobba igenom artikeln "[Kokbok för databasmodellering](https://dbwebb.se/kunskap/kokbok-for-databasmodellering)", den ger dig processen du skall följa. I detta kmom handlar det främst om att fokusera på konceptuell modellering.
+
+
+{/*
+### Ai som lärare (instuderingsfrågor)
+
+Här finns ett antal instuderingsfrågor som hjälper dig att finna information på egen hand för att träna på de koncept som är relevanta för detta kmom.
+
+<details>
+<summary>Instuderingsfrågor</summary>
+
+1. 
+
+Här är en [utskrift av när en frågesession genomförts](https://chatgpt.com/share/68bafa23-4b84-8005-a745-451d43258c9a). Dina svar kan skifta från de som visas. Var alltid kritisk till dina källor.
+
+</details>
+
+
+*/}
+
+## Övningar & Uppgifter
+
+Övningar är träning inför uppgifterna. Uppgifter skall utföras och redovisas.
+
+
+
+### Övningar
+
+Jobba igenom övningarna, de förbereder dig inför uppgifterna.
+
+1. Jobba igenom övningen "[Transaktioner i databas](/website/laromaterial/ovning/transaktioner/)" för att lära dig grunderna i hur du använder transaktioner i databaser.
+
+1. Jobba igenom övningen "[CSharp med transaktioner](/website/laromaterial/ovning/csharp-transaction/)" för att lära dig hur du använder transaktioner mot databasen från ett CSharp program.
+
+
+{/*
+Skapa en egen databas och lek runt (eller i kmom03)
+-------------------------
+
+Vi leker runt och gör CREATE DATABASE/TABLE, SELECT, INSERT, UPDATE, DELETE, DROP.
+
+* [Get going with a database and SQL](https://gitlab.com/mikael-roos/database/-/tree/main/sql/ladok)
+
+*/}
+
+
+
+### Uppgifter
+
+Följande uppgifter skall utföras och resultatet skall redovisas.
+
+1. Jobba igenom uppgiften "[Uppgift: CSharp bank (kmom04)](/website/laromaterial/uppgift/kmom04-csharp/)" där du får jobba med transaktioner.
+
+1. Jobba igenom uppgiften "[Uppgift: ER-modellering - konceptuell (kmom04)](/website/laromaterial/uppgift/kmom04-er-konceptuell/)".
+
+
+
+## Resultat & Redovisning
+
+Läs [instruktionen om hur du skall redovisa](/website/laromaterial/instruktion/resultat-och-redovisning).
+
+Se till att följande frågor besvaras i din redovisningstext i din rapportsida.
+
+* Hur gick det att förstå konceptet transaktioner i databas?
+
+* Berätta hur det gick att lösa uppgiften med C#-programmet. Var det något som var svårt eller utmanande? Hur ser du på din kod och förbättringspotential kring den?
+
+* Berätta om ER-modelleringen så här långt i kursen, är modelleringsbiten något som hjälper din förståelse för hur databasen byggs upp?
+
+* Vilken är din TIL för detta kmom?
+
+
+
+## Kommentarer & Noteringar
+
+<details>
+<summary>Plan för veckans genomgångar</summary>
+
+Följande är en plan för hur lärarteamet _kan_ lägga upp genomgångarna under veckan för detta kursmoment.
+
+
+
+### Måndag
+
+Första timmen:
+
+* Övning med transaktioner
+* Visa hur man jobbar med transaktioner i C#.
+
+Andra timmen:
+
+* Visa hur man bygger två tabeller och en kopplingstabell med PK och FK.
+* Dels account-tabell som delas upp i delar och dels exempel i classicmodels.
+
+
+
+### Onsdag
+
+Första timmen:
+
+* ER-modellering, fokus konceptuell med ett exempel 
+
+Andra timmen:
+
+* Stöd för uppgiften med ER-modellering (konceptuell)
+
+
+### Torsdag
+
+* 
+
+</details>

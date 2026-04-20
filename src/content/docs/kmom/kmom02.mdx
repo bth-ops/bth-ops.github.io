@@ -1,0 +1,167 @@
+---
+title: "Kmom02: SQL JOIN"
+description: Mer SQL med fokus på JOIN och aggregerande funktioner och vi fortsätter med grunder i ER-modellering.
+revision:
+  2026-01-23: (A, mos) Första versionen. 
+---
+
+import Figure from '@components/CustomFigure.astro';
+import YouTube from '@components/YouTube.astro';
+
+{/* TODO
+*
+*/}
+
+Vi jobbar vidare med SQL och tränar på att göra JOIN av flera tabeller och skriva rapporter som aggregerar värden i tabellen. Vi tittar också på begreppet vyer.
+
+Vi börjar titta på hur man modellerar databaser med ER-diagram.
+
+
+
+## Läs & Studera
+
+Här kan du på egen hand studera och förbereda dig inför övningar och uppgifter.
+
+
+
+### Föreläsning
+
+Titta på följande inspelade föreläsningar. Föreläsningarna kan innehålla tips om läsanvisningar.
+
+1. [SQL introduktion och exempel](/website/laromaterial/forelasning/sql-introduktion-och-exempel/) ger dig en introduktion till frågespråket SQL.
+
+
+
+### Kurslitteratur
+
+Läs följande:
+
+1. Kursboken Databasteknik om mer SQL.
+    * Kap 8: Mer om SQL: Aggregatfunktioner, null-värden, yttre join (hoppa över  delen om yttre join)
+
+Det finns ytterligare ett kapitel i boken som är relaterat till bakgrunden av SQL, det går utanför kursens ram så läs endast vid intresse.
+
+1. Kursboken Databasteknik om databasteknikens grunder.
+    * Kap 11: Relationsalgebra
+
+
+{/*
+### Artiklar
+
+Kika igenom följande artiklar.
+
+1. XXX
+*/}
+
+
+
+### Ai som lärare (instuderingsfrågor)
+
+Här finns ett antal instuderingsfrågor som hjälper dig att finna information på egen hand för att träna på de koncept som är relevanta för detta kmom.
+
+<details>
+<summary>Instuderingsfrågor</summary>
+
+1. Berätta kort om konceptet JOIN i relationsdatabaser och SELECT.
+1. Vad innebär en CROSS JOIN?
+1. Vad innebär en INNER JOIN?
+1. Vilken typ av aggregerande funktioner finns i SQL, visa några exempel.
+1. Förklara skillnaden mellan WHERE och HAVING.
+1. Förklara begreppet VYER i SQL och när kan det vara användbart?
+
+Här är en [utskrift av när en frågesession genomförts](https://chatgpt.com/share/69738697-53dc-8005-b142-c8aaae2cecc1). Dina svar kan skifta från de som visas. Var alltid kritisk till dina källor.
+
+</details>
+
+
+
+## Övningar & Uppgifter
+
+Övningar är träning inför uppgifterna. Uppgifter skall utföras och redovisas.
+
+
+
+### Övningar
+
+Jobba igenom övningarna, de förbereder dig inför uppgifterna.
+
+1. Jobba igenom övningen "[Övning databasen World: JOIN och rapporter](/website/laromaterial/ovning/world-database-join/)". Övningen jobbar vidare med databasen world och går igenom hur man slår ihop flera tabeller till en rapport med JOIN.
+
+1. Jobba igenom övningen "[Övning databasen World: Aggregerande funktioner och vyer](/website/laromaterial/ovning/world-database-aggregation/)". Övningen jobbar vidare med databasen world och går igenom nya koncept som aggregerande funktioner och vyer.
+
+{/*
+1. Verktyg för att modellera?
+
+*/}
+
+
+
+### Uppgifter
+
+Följande uppgifter skall utföras och resultatet skall redovisas.
+
+1. Genomför uppgiften "[Databasen World: JOIN](/website/laromaterial/uppgift/kmom02-join/)".
+
+
+
+## Resultat & Redovisning
+
+Läs [instruktionen om hur du skall redovisa](/website/laromaterial/instruktion/resultat-och-redovisning).
+
+Se till att följande frågor besvaras i din redovisningstext i din rapportsida.
+
+* Jämför SQL med andra sätt att programmera, relatera till några av de programmeringsspråk du kan.
+* Förklara för någon som inte kan databaser, vad JOIN gör och hur det fungerar.
+* Hur gick det att genomföra övningar och uppgifterna, berätta gärna vad som var enkelt och vad som var mer utmanande att hantera?
+
+* Vilken är din TIL för detta kmom?
+
+
+
+## Kommentarer & Noteringar
+
+<details>
+<summary>Plan för veckans genomgångar</summary>
+
+Följande är en plan för hur lärarteamet _kan_ lägga upp genomgångarna under veckan för detta kursmoment.
+
+
+
+### Måndag
+
+Första timmen:
+
+* Repetera SELECT mot databasen world.
+* Prata om JOIN. Bygg ihop en trippel JOIN av databasen World.
+* Gör en vy och prata om konceptet vyer.
+
+Andra timmen:
+
+* Träna på aggregerande funktioner med databasen World.
+* SUM, AVG, COUNT, MIN, MAX
+* GROUP_CONCAT
+* Prata om GROUP BY och HAVING.
+
+
+
+### Onsdag (preliminär, ej klar)
+
+Första timmen:
+
+* ER-modellering med relationer
+* Verktyg för modellering: 
+    * dbdiagram.io
+    * draw.io
+    * PlantUML
+
+Andra timmen:
+
+* ER-modellering, övning med WoW
+
+### Torsdag
+
+* Övning "join" med databasen World klar
+* Övning "aggregate" med databasen World klar
+* Veckans uppgift med databasen world påbörjad
+
+</details>

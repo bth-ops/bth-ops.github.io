@@ -1,0 +1,179 @@
+---
+title: "Kmom03: ER intro + CSharp"
+description: Vi jobbar vidare med ER-modellering och .
+revision:
+  2026-01-31: (A, mos) Första versionen. 
+---
+
+import Figure from '@components/CustomFigure.astro';
+import YouTube from '@components/YouTube.astro';
+
+{/* TODO
+* 
+*
+*/}
+
+Vi bekantar oss men en ny databas som heter Classic Models. Databasen innehåller information om ett företag som säljer modellbilar. Vi skall läsa in databasen i vår MariaDB-server och sedan använda både terminalklienten och desktopklienten för att analysera databasens schema och dess innehåll.
+
+Du får skapa ett applikationsprogram i terminalen med CSharp som kopplar sig mot databasen och presenterar resultat från databasfrågor.
+
+Vi övar i hur man modellerar och bygger upp en databas, det som kallas Entity-Relationship modelling, ER-modellering, eller bara databasmodellering. Vi delar in modelleringen i konceptuell, logisk och fysisk modellering. 
+
+
+{/*
+## Labbmiljö
+
+Installera följande.
+
+1. Programmeringsmiljön för CSharp.
+*/}
+
+
+
+## Läs & Studera
+
+Här kan du på egen hand studera och förbereda dig inför övningar och uppgifter.
+
+
+
+### Föreläsning
+
+Titta på följande inspelade föreläsningar. Föreläsningarna kan innehålla tips om läsanvisningar.
+
+{/* 1. CSharp och databaser. */}
+
+1. [Modellera databas - faser och steg](/website/laromaterial/forelasning/modellera-databas-faser-och-steg/) ger en översikt av modellering av databaser och visar olika faser och steg för att modellera databasen.
+
+
+
+### Kurslitteratur
+
+Läs följande:
+
+1. Databasteknik - om avancerad SQL.
+    * Kap 21: SQL inuti ett program
+
+1. Databasteknik - om ER modellering.
+    * Kap 2: ER-modellering
+    * Kap 4: Designprocessen
+
+1. [Boken har även en webbplats](http://www.databasteknik.se/webbkursen/) och vissa utdrag från boken finns där. Relevant för detta kmom är följande:
+    * [ER-modellering i webbkursen](http://www.databasteknik.se/webbkursen/er/)
+
+
+
+### Artiklar
+
+Kika igenom följande artiklar.
+
+1. Läs igenom igenom artikeln "[Kokbok för databasmodellering](https://dbwebb.se/kunskap/kokbok-for-databasmodellering)", den ger dig en metod för att modellera databaser i olika faser. Du kommer jobba enligt denna modellen i uppgiften. I detta kmom läser du först och främst delen om "Konceptuell modellering".
+
+
+
+{/*
+### Ai som lärare (instuderingsfrågor)
+
+Här finns ett antal instuderingsfrågor som hjälper dig att finna information på egen hand för att träna på de koncept som är relevanta för detta kmom.
+
+<details>
+<summary>Instuderingsfrågor</summary>
+
+1. 
+
+Här är en [utskrift av när en frågesession genomförts](https://chatgpt.com/share/68bafa23-4b84-8005-a745-451d43258c9a). Dina svar kan skifta från de som visas. Var alltid kritisk till dina källor.
+
+</details>
+*/}
+
+
+
+## Övningar & Uppgifter
+
+Övningar är träning inför uppgifterna. Uppgifter skall utföras och redovisas.
+
+
+
+### Övningar
+
+Jobba igenom övningarna, de förbereder dig inför uppgifterna.
+
+1. Jobba igenom övningen "[Övning databasen Classic Models](/website/laromaterial/ovning/classicmodels/)". Övningen hjälper dig igång med en ny databas och undersöka dess schema och innehåll.
+
+1. Jobba igenom övningen "[Övning CSharp med databasen Classic Models](/website/laromaterial/ovning/csharp/)". Övningen hjälper dig igång med CSharp och konstruktioner för att exekvera databasfrågor och ta hand om resultatet.
+
+{/* Modelleringsövningsuppgifter
+https://docs.google.com/document/d/1kKoSO2BQL5T2cnzshpM_hnk5JbqT0_00khfGJKZQ2Fo/edit
+
+Gjort modelleringsövning i sal med draw.io: https://goo.gl/vNRvKt */}
+
+
+
+### Uppgifter
+
+Följande uppgifter skall utföras och resultatet skall redovisas.
+
+1. Genomför uppgiften "[Uppgift: CSharp](/website/laromaterial/uppgift/kmom03-csharp/)".
+
+
+
+## Resultat & Redovisning
+
+Läs [instruktionen om hur du skall redovisa](/website/laromaterial/instruktion/resultat-och-redovisning).
+
+Se till att följande frågor besvaras i din redovisningstext i din rapportsida.
+
+* Hur gick det att jobba med CSharp mot databasen Classic Models, några reflektioner?
+* Berätta om din kodstruktur i ditt terminalprogram mot databasen, är du nöjd eller ser du förbättringspotential?
+
+* Hur gick det att jobba med ER-modelleringen, några reflektioner?
+* Ser du likheter eller skillnader mellan databasmodellering och modellering av objekt i objektorienterad programmering?
+
+* Fanns det några extra svårigheter/utmaningar du kämpade med i kursmomentet?
+
+* Vilken är din TIL för detta kmom?
+
+
+
+## Kommentarer & Noteringar
+
+<details>
+<summary>Plan för veckans genomgångar</summary>
+
+Följande är en plan för hur lärarteamet _kan_ lägga upp genomgångarna under veckan för detta kursmoment.
+
+
+
+### Måndag
+
+Första timmen:
+
+* Övningen med att komma igång med databasen classicmodels.
+
+Andra timmen:
+
+* Programmera med CSharp mot databasen classicmodels.
+
+
+
+### Onsdag
+
+Första timmen:
+
+* ER-modellering med relationer, många till många (M-N)
+* ER-modellering, övning med M-N relation
+* "Samma" text på olika sätt
+* Kokboken 10 steg
+
+Andra timmen:
+
+* Konceptuell ER-modellering av WoW med M-N relation, steg 1-6
+
+
+### Torsdag
+
+* Labbmiljön med CSharp på plats
+* Övningen med terminalprogram i CSharp klar
+* Övningen med classicalmodels klar
+* Uppgiften med terminalprogram i CSharp påbörjad
+
+</details>

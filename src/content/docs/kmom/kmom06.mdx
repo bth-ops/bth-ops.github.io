@@ -1,0 +1,152 @@
+---
+title: "Kmom06: ER fysisk + Triggers"
+description: Avsluta ER-modelleringen och lär dig om begreppet triggers.
+revision:
+  2026-02-20: (A, mos) Första versionen. 
+---
+
+import Figure from '@components/CustomFigure.astro';
+import YouTube from '@components/YouTube.astro';
+
+{/* TODO
+* UNION (borde skapa övning på detta?)
+* INSERT ON DUPLICATE KEY UPDATE? (borde skapa övning på denna?)
+* OUTER JOIN product/order/orderdetails (borde skapa övning på denna?)
+*/}
+
+Vi slutför ER-modellen med fokus på fysisk modellering. Vi skapar SQL-kod som skapar databasens schema.
+
+Vi jobbar vidare med hur man programmerar i databasen med hjälp av triggers.
+
+
+
+## Läs & Studera
+
+Här kan du på egen hand studera och förbereda dig inför övningar och uppgifter.
+
+
+
+### Föreläsning
+
+Titta på följande inspelade föreläsningar. Föreläsningarna kan innehålla tips om läsanvisningar.
+
+1. [Trigger i databasen](/website/laromaterial/forelasning/trigger) om konceptet "programmera i databasen" och hur triggers passar in i den möjligheten.
+
+
+
+### Kurslitteratur
+
+Läs följande:
+
+1. Databasteknik
+    * Kap 16: Aktiva databaser och triggers
+    * Kap 8: Mer om SQL: Aggregatfunktioner, null-värden, yttre join (främst delen med yttre join)
+
+
+
+### Artiklar
+
+Kika igenom följande artiklar.
+
+1. I manualen för MariaDB kan du läsa om triggers, det är främst följande kapitel som är relevanta, bekanta dig med dem, du kommer att träna på begreppen i kommande övningar.
+    * [Triggers](https://mariadb.com/docs/server/server-usage/triggers-events/triggers)
+
+1. Fortsätt jobba igenom artikeln "[Kokbok för databasmodellering](https://dbwebb.se/kunskap/kokbok-for-databasmodellering)", den ger dig processen du skall följa. I detta kmom handlar det främst om att fokusera på fysisk modellering.
+
+
+
+{/*
+### Ai som lärare (instuderingsfrågor)
+
+Här finns ett antal instuderingsfrågor som hjälper dig att finna information på egen hand för att träna på de koncept som är relevanta för detta kmom.
+
+<details>
+<summary>Instuderingsfrågor</summary>
+
+1. 
+
+Här är en [utskrift av när en frågesession genomförts](https://chatgpt.com/share/68bafa23-4b84-8005-a745-451d43258c9a). Dina svar kan skifta från de som visas. Var alltid kritisk till dina källor.
+
+</details>
+
+*/}
+
+
+
+## Övningar & Uppgifter
+
+Övningar är träning inför uppgifterna. Uppgifter skall utföras och redovisas.
+
+
+
+### Övningar
+
+Jobba igenom övningarna, de förbereder dig inför uppgifterna.
+
+1. Jobba igenom "[Övning: Triggers i databas](/website/laromaterial/ovning/triggers/)" för att lära dig om triggers och vad du kan göra med dem.
+
+
+
+### Uppgifter
+
+Följande uppgifter skall utföras och resultatet skall redovisas.
+
+1. Jobba igenom "[Uppgift: CSharp bank (kmom06)](/website/laromaterial/uppgift/kmom06-csharp/)" för att lära dig om triggers och vad du kan göra med dem.
+
+1. Jobba igenom uppgiften "[Uppgift: ER-modellering - fysisk (kmom06)](/website/laromaterial/uppgift/kmom06-er-fysisk/)".
+
+1. När du är helt klar med detta kursmomentet (och kmom04, kmom05) så lämnar du in genom att göra en pull request (PR) mot din branch `bth/submit/kmom06`. Om du behöver hjälp med att göra en PR så läser du [instruktionen om hur du gör en PR i kmom03](/website/laromaterial/instruktion/gor-en-pr-for-kmom03/).
+
+
+
+## Resultat & Redovisning
+
+Läs [instruktionen om hur du skall redovisa](/website/laromaterial/instruktion/resultat-och-redovisning).
+
+Se till att följande frågor besvaras i din redovisningstext i din rapportsida.
+
+* Hur gick det att komma igång med triggers?
+* Hur är din syn på att "programmera" med triggers i databasen, jämför med att skriva motsvarande kod i klienten eller i en lagrad procedur?
+* Skriv ett kort stycke (2-5 meningar) om triggers där du förklarar begreppen (fördel, nackdel, användningsområde) för en som inte är insatt.
+
+* Hur vill du sammanfatta ditt arbete med ER-uppgiften, nu när du är klar med den efter tre veckors arbete? Blev det en bra databas?
+
+* Vilken är din TIL för detta kmom?
+
+
+
+## Kommentarer & Noteringar
+
+<details>
+<summary>Plan för veckans genomgångar</summary>
+
+Följande är en plan för hur lärarteamet _kan_ lägga upp genomgångarna under veckan för detta kursmoment.
+
+
+
+### Måndag
+
+Första timmen:
+
+* Övning med triggers, hur kan en loggtabell fungera?
+
+Andra timmen:
+
+* UNION
+* JOIN product, order, orderrows
+* OUTER JOIN
+
+
+### Onsdag
+
+* ER-modellering, fokus fysisk med ett exempel 
+* Gör en delmängd av biblioteket och testa först
+* Gå igenom biblioteket
+* Stöd för uppgiften med ER-modellering (fysisk)
+
+
+### Torsdag
+
+* 
+
+</details>

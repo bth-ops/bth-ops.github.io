@@ -1,0 +1,487 @@
+---
+title: "Kom igång med terminalen" 
+sidebar:
+    order: 0010
+---
+
+import { FileTree } from '@astrojs/starlight/components';
+import Figure from '@components/CustomFigure.astro';
+import nano1 from '@assets/unix-guide/nano1.png';
+import man1 from '@assets/unix-guide/man1.png';
+import { Steps } from '@astrojs/starlight/components';
+import YouTube from '@components/YouTube.astro';
+
+<YouTube
+    id="AO1lJzR25Yg"
+    caption="En genomgång av guiden."
+/>
+
+Om man sen tidigare inte är bekant med hur terminaler fungerar så kan det vara svårt att snabbt komma igång med det. Här följer därför en guide för grundläggande användning av terminalen. Till hjälp har jag förskapat lite filer och kataloger. Startläget ser ut som följer:
+
+```console title="Startläge"
+klw@DESKTOP:~/git/work/unix-guide$ tree .
+.
+├── action
+│   ├── Daredevil.txt
+│   └── Reacher.txt
+├── comedy
+│   ├── Arrested_Development.txt
+│   └── Community.txt
+└── drama
+    ├── Breaking_Bad.txt
+    └── Peaky_Blinders.txt
+
+3 directories, 6 files
+```
+
+Vi kan se tre kataloger: "action", "comedy" och "drama". Det finns sedan två filer i respektive katalog som representerar tv-serier.
+
+I ett unixsystem behöver vi inte ange filändelser utan den informationen finns i filen. Det kan vara bra utifrån ett användarvänligt perspektiv att ändå lägga till filändelsen.
+
+Du kan kopiera hela koden nedan och klistra in i terminalen så skapas samma struktur och innehåll.
+
+```console title="Skapa materialet, kopiera allt och klistra in i temrinalen."
+mkdir -p unix-guide
+cd unix-guide/
+mkdir -p action comedy drama
+touch action/{Daredevil,Reacher}.txt
+touch comedy/{Arrested_Development,Community}.txt
+touch drama/{Breaking_Bad,Peaky_Blinders}.txt
+echo "\"Breaking Bad\" is a crime drama series about Walter White,
+a high school chemistry teacher who, after being diagnosed with terminal lung cancer,
+partners with a former student, Jesse Pinkman,
+to cook and sell methamphetamine to secure his family's financial future." > drama/Breaking_Bad.txt
+```
+
+
+## Förkunskaper
+
+Du har installerat en egen terminal enligt guiden [Terminal och pakethanterare](/website/laromaterial/labbmiljo/terminal/).
+
+
+
+## Vad är kommandon?
+
+Ett *kommando* är en instruktion till operativsystemet att utföra en viss uppgift. Det kan vara att starta ett program eller köra ett script, eller bara enkla uppgifter som att ändra rättigheter på filer och traversera filträdet. Kommandon kan man bara köra rakt av eller så kan man lägga till *flaggor (options)* och *argument*.
+
+Här är ett exempel på ett enkelt kommando:
+
+```console title="Lista filer och kataloger (kommando)"
+ls
+```
+
+Här är ett exempel på samma kommando med flaggor, dvs inställningar till kommandot:
+
+```console title="Lista filer och kataloger med flaggor (options)"
+ls -al
+```
+
+Här är exempel på ett kommando med ett argument, vilket ofta innefattar vad kommandot ska utföras på:
+
+```console title="Lista filer och kataloger i en specifik katalog (argument)"
+ls katalognamn
+```
+
+Du kan såklart blanda argument och options:
+
+```console title="Lista alla filer och kataloger i en specifik katalog (options, argument)"
+ls -al katalognamn
+```
+
+
+## Tips att öva in från start
+
+1. Om du redan har skrivit och utfört ett kommando hamnar det i *history*. Normalt sparas de 500 senaste kommandona där. Vi kan med `PIL UPP` gå igenom dem och välja att exekvera det igen.
+
+2. Om man börjar skriva ett kommando eller ett argument kan man automatiskt fylla i resten med `TAB`. Det kallas för *autocompletion* och gör att vi kan spara mycket tid i terminalen. Om det man har skrivit matchar flera saker behöver man trycka fler gånger på TAB för att se vilka alternativ man har. När man enbart har ett alternativ som matchar fylls hela på. 
+
+3. Vill man rensa skärmen kan man använda kortkommandot `CTRL+L` alternativt köra kommandot `clear`.
+
+4. Med kortkommandot `CTRL+e` hoppar man till slutet av raden.
+
+5. Med kortkommandot `CTRL+a` hoppar man till början av raden.
+
+6. Med kortkommandot `CTRL+PIL` kan du hoppa fram och tillbaka med markören ord för ord. 
+
+7. Med kortkommandot `CTRL+k` raderar du allt som kommer efter markören.
+
+Nu kan vi börja testa kommandon och hantera de filer och kataloger som är skapade.
+
+
+
+## Navigera i filsystemet
+
+Det är inte alltid lätt man ser var man befinner sig i filsystemet, det beror på prompten. För att få fram hela sökvägen kan vi använda `pwd` (Print Working Directory).
+
+```console title="pwd"
+klw@DESKTOP:~/git/work/unix-guide$ pwd
+/home/klw/git/work/unix-guide
+```
+
+Vill man se vilka filer och mappar som finns i en katalog använder vi `ls`:
+
+```console title="ls"
+klw@DESKTOP:~/git/work/unix-guide$ ls
+action  comedy  drama
+```
+
+Vi kan se de tre katalogerna. För att se vad som finns inuti en katalog använder vi den som argument:
+
+```console title="ls med argument"
+klw@DESKTOP:~/git/work/unix-guide$ ls comedy
+Arrested_Development.txt  Community.txt
+```
+
+Vill man ha en mer detaljerad lista lägger vi till flaggan *l*:
+
+```console title="ls med flagga"
+klw@DESKTOP:~/git/work/unix-guide$ ls -l comedy
+total 0
+-rw-r--r-- 1 klw klw 0 Jul  1 13:40 Arrested_Development.txt
+-rw-r--r-- 1 klw klw 0 Jul  1 13:40 Community.txt
+```
+
+Nu ser vi mer information, till exempel vilka rättigheter filerna har (mer om det senare), när de skapades och vem som äger dem samt storlek på filerna.
+
+För att även se dolda filer kan vi använda flaggan *a*:
+
+```console title="ls med dolda filer"
+klw@DESKTOP:~/git/work/unix-guide$ ls -al comedy
+total 8
+drwxr-xr-x 2 klw klw 4096 Jul  1 13:40 .
+drwxr-xr-x 5 klw klw 4096 Jul  1 13:37 ..
+-rw-r--r-- 1 klw klw    0 Jul  1 13:40 Arrested_Development.txt
+-rw-r--r-- 1 klw klw    0 Jul  1 13:40 Community.txt
+```
+
+Nu dök det upp två "filer" till. `.` och `..`. Den första (.) representerar en länk till den katalog vi är i (comedy) och den andra (..) representerar en länk till ovan katalog. Vi kikar på ett kommando till där det kommer till användning. Iställer för att använda `comedy` som ett argument kan vi ta oss dit för att sedan jobba därifrån. Vi använder kommandot *cd* (Change Directory): 
+
+```console title="cd"
+klw@DESKTOP:~/git/work/unix-guide$ cd comedy/
+klw@DESKTOP:~/git/work/unix-guide/comedy$
+```
+
+Notera hur prompten ändras och vi är numer inuti katalogen `comedy`:
+
+```console title="ls -al"
+klw@DESKTOP:~/git/work/unix-guide/comedy$ ls -al
+total 8
+drwxr-xr-x 2 klw klw 4096 Jul  1 13:40 .
+drwxr-xr-x 5 klw klw 4096 Jul  1 13:37 ..
+-rw-r--r-- 1 klw klw    0 Jul  1 13:40 Arrested_Development.txt
+-rw-r--r-- 1 klw klw    0 Jul  1 13:40 Community.txt
+```
+
+Vi stegar alltså in i kataloger med `cd <katalognamn>`. Vi kunde se innan att det fanns en länk `..`. Den använder vi när vi vill backa ett steg:
+
+```console title="cd .."
+klw@DESKTOP:~/git/work/unix-guide/comedy$ cd ..
+klw@DESKTOP:~/git/work/unix-guide$
+```
+
+
+
+## Hantera filer och kataloger
+
+Låt säga att vi vill lägga till en ny tv-serie: "Squid_Game.txt" i katalogen "action". Vi använder då `touch` för att skapa en fil.
+
+```console title="touch"
+klw@DESKTOP:~/git/work/unix-guide$ cd action
+klw@DESKTOP:~/git/work/unix-guide/action$ touch Squid_Game.txt
+klw@DESKTOP:~/git/work/unix-guide/action$ ls
+Daredevil.txt  Reacher.txt  Squid_Game.txt
+```
+
+Vi behöver en ny kategori och behöver då skapa en ny katalog. Vi använder då `mkdir` för det.
+
+```console title="mkdir"
+klw@DESKTOP:~/git/work/unix-guide$ mkdir cartoon
+klw@DESKTOP:~/git/work/unix-guide$ ls
+action  cartoon  comedy  drama
+```
+
+Det finns en bra flagga till `mkdir` som gör att vi inte får felmeddelande om katalogen redan finns, `-p`:
+
+```console title="mkdir -p"
+klw@DESKTOP:~/git/work/unix-guide$ mkdir cartoon
+mkdir: cannot create directory ‘cartoon’: File exists
+klw@DESKTOP:~/git/work/unix-guide$ mkdir -p cartoon
+klw@DESKTOP:~/git/work/unix-guide$
+```
+
+För att lägga till "The_Simpsons.txt" i den nya katalogen återanvänder vi en fil och byter sedan namn på den. Vi får då se några nya kommandon. Först kopierar vi en fil och lägger den i mappen "cartoon":
+
+```console title="cp <source> <target>"
+klw@DESKTOP:~/git/work/unix-guide$ cp drama/Breaking_Bad.txt cartoon/
+klw@DESKTOP:~/git/work/unix-guide$ ls cartoon/
+Breaking_Bad.txt
+```
+
+Vi kopierar filen (källan) `drama/Breaking_Bad.txt` till katalogen (målet) `cartoon`. Nu ska vi byta namn på filen så det stämmer. Det gör vi med samma kommando som vi flyttar filer:
+
+```console title="mv <source> <target>"
+klw@DESKTOP:~/git/work/unix-guide$ mv cartoon/Breaking_Bad.txt cartoon/The_Simpsons.txt
+klw@DESKTOP:~/git/work/unix-guide$ ls cartoon/
+The_Simpsons.txt
+```
+
+Skulle vi behöva ta bort en fil använder vi kommandot `rm` (remove):
+
+```console title="rm"
+klw@DESKTOP:~/git/work/unix-guide$ rm action/Reacher.txt
+klw@DESKTOP:~/git/work/unix-guide$ ls action/
+Daredevil.txt  Squid_Game.txt
+```
+
+Om det är en katalog vi ska ta bort behöver vi lägga till flaggan `-r` (recursive) för att det ska gå:
+
+```console title="rm -r"
+klw@DESKTOP:~/git/work/unix-guide$ rm -r cartoon
+klw@DESKTOP:~/git/work/unix-guide$ ls
+action  comedy  drama
+```
+
+
+## Sök i filsystemet
+
+För att enkelt hitta var filer och kataloger finns kan vi använda kommandot `find`:
+
+```console title="find"
+klw@work:~/git/work/unix-guide$ find -name Peaky_Blinders.txt
+./drama/Peaky_Blinders.txt
+```
+
+Vi utgår ifrån den katlog vi befinner oss i. För att söka i en annan katalog lägger vi till sökvägen dit som argument. Låt säga att vi vill söka i katalogen 'comedy':
+
+```console title="find med sökväg"
+klw@work:~/git/work/unix-guide$ find comedy -name Peaky_Blinders.txt
+```
+
+Där finns den inte så ingen utskrift syns. Med find kan vi med fördel även söka med ett så kallat *wildcard*. 
+
+```console title="find med wildcard"
+klw@work:~/git/work/unix-guide$ find -name Dare*
+./action/Daredevil.txt
+```
+
+Det passar bra om det finns flera filer med snarlika namn eller om man inte vet/orkar skriva hela filnamnet.
+
+
+
+## Läsa innehåll i filer
+
+Nu har vi lite koll på hur vi navigerar i filsystemet och skapar, flyttar, kopierar och tar bort filer och kataloger. Vi går vidare med att titta på hur vi kan se innehållet i filerna. För att det ska fungera behöver det finnas något att se så vi lägger till lite information i en av filerna. Här använder jag den inbyggda editorn *nano* för att skriva till en fil. Jag kör kommandot `nano drama/Breaking_Bad.txt` och lägger till lite text:
+
+```console title="nano"
+nano drama/Breaking_Bad.txt
+```
+
+<Figure 
+    src={nano1}
+    caption="Texteditorn nano"
+/>
+
+När jag sparar trycker jag CTRL+X och sedan väljer jag *y* följt av Enter för att spara med samma filnamn jag öppnade med.
+
+Nu har vi lite information i en fil. Vill vi nu se vad den innehåller använder vi `cat`:
+
+```console title="cat"
+klw@DESKTOP:~/git/work/unix-guide$ cat drama/Breaking_Bad.txt
+"Breaking Bad" is a crime drama series about Walter White,
+a high school chemistry teacher who, after being diagnosed with terminal lung cancer,
+partners with a former student, Jesse Pinkman,
+to cook and sell methamphetamine to secure his family's financial future.
+```
+
+Om vi bara vill se en eller flera rader i filen kan vi arbeta med *head* för att läsa från början i filen och *tail* för att läsa från slutet:
+
+```console title="head"
+klw@DESKTOP:~/git/work/unix-guide$ head -2 drama/Breaking_Bad.txt
+"Breaking Bad" is a crime drama series about Walter White,
+a high school chemistry teacher who, after being diagnosed with terminal lung cancer,
+```
+
+Flaggan -2 betyder att det ska läsas två rader från start. 
+
+```console title="tail"
+klw@DESKTOP:~/git/work/unix-guide$ tail -2 drama/Breaking_Bad.txt
+partners with a former student, Jesse Pinkman,
+to cook and sell methamphetamine to secure his family's financial future.
+```
+
+Som du ser gäller samma sak för tail.
+
+
+
+## Hur kommer jag till min hemmakatalog?
+
+Ofta vill man ta sig till sin egna rot, sin hemmakatalog. Det finns några sätt man lätt kan hoppa dit direkt:
+
+```console title="cd"
+cd
+```
+
+```console title="cd $HOME"
+cd $HOME
+```
+
+```console title="cd ~"
+cd ~
+```
+
+Alla tre sätt ovan tar dig till din användares hemmakatalog.
+
+
+
+## Övriga användbara kommandon
+
+```console title="Skriv ut något till STDOUT"
+echo "hello world"
+```
+
+```console title="Skicka vidare utskriften till en fil"
+echo "hello world" > hello.txt
+cat hello.txt
+hello world
+```
+
+För att "fylla på" filen utan att skriva över innehållet använder vi `>>`:
+
+```console title="Skicka vidare utskriften till en fil"
+echo "hello world again" >> hello.txt
+cat hello.txt
+hello world
+hello world again
+```
+
+
+
+
+### Manualen (man)
+
+Det är inte lätt att komma ihåg vilka flaggor som kan användas eller vad de alla betyder, eller i vilken ordning man ska skriva vissa parametrar. Därför finns det så gott som alltid en manual för kommandona som nås av att använda kommandot `man`. Vill du t.ex veta mer om vad du kan göra med ls? 
+
+Så här får du upp manualen:
+
+```console title="Vad kan man göra med ls?"
+man ls
+```
+
+<Figure 
+    src={man1}
+    caption="Manualen över kommandot ls."
+/>
+
+Väl här kan du navigera med piltangenterna. Du kan också söka i manualen med `shift+/`. Om du till exempel vill se hur man listar *directories* söker du bara efter det och trycker `Enter`. Stega vidare till nästa sökträff med `n`.
+
+Du avslutar med `q` (quit).
+
+
+
+### History (history)
+Vill du se vilka kommandon du har skrivit tidigare?
+
+```console title="history"
+history
+```
+
+### Om terminalen "låser sig"
+
+När vi skriver kod i en kodeditor vänjer man sig snabbt med att spara med `ctrl+s`. Om man skulle råka göra det i terminalen låser man den och döljer det man skriver. För att "låsa upp" igen är det `ctrl+q` som gäller. 
+
+
+
+### Öppna filhanteraren från WSL2
+
+Ibland kan man vilja se filer man jobbar med i filhanteraren istället. Du kan då exekvera kommandot `explorer.exe`:
+
+```console title="explorer.exe"
+explorer.exe
+```
+
+Nu öppnas filhanteraren i sin egna root. För att öppna den i nuvarande katalog man står i lägger man till en punkt för att markera *den nuvarande katalogen*:
+
+```console title="explorer.exe med nuvarande katalog"
+explorer.exe .
+```
+
+
+
+## Cheatsheet över ovan kommandon
+
+| Kommando | Beskrivning |
+|----------|-------------|
+| PIL UPP  | Backa i *history*  |
+| TAB      | Autocompletion     |
+| CTRL+l / clear | Rensa terminalen |
+| CTRL+e    | Hoppa till slutet av raden |
+| CTRL+a    | Hoppa till början av raden |
+| CTRL+k    | Raderar allt efter markören |
+| pwd    | Skriver ut var du befinner dig |
+| ls       | Listar filer och kataloger |
+| cd       | Byter katalog |
+| mkdir       | Skapar en katalog |
+| cp \<source\> \<target\>     | Kopierar en fil/katalog (-r) |
+| mv \<source\> \<target\>     | Flyttar en fil/katalog |
+| rm      | Raderar en fil/katalog (-r) |
+| find      | Sök efter en fil/katalog |
+| nano      | En inbyggd terminaleditor |
+| cat      | Visar allt innehåll i en fil |
+| head      | Visar innehåll i en fil från start (-n) |
+| tail      | Visar innehåll i en fil från slutet (-n) |
+| $HOME      | Miljövariabel med sökväg till din hemmakatalog |
+| echo      | Skriver ut något i terminalen |
+| man      | Manualen |
+| history      | Visar dina tidigare exekverade kommandon |
+| CTRL+s      | Låser input och döljer den |
+| CTRL+q      | Låser upp input och visar det du skrivit |
+
+
+
+## Övning
+
+Nedan kommer en övning där du få på egen hand träna på några av de kommandon som tas upp i guiden. Ta det i din egna takt och försök få en känsla för vad kommandona gör och 
+<Steps>
+1. Börja med att ladda ned zip-filen från [dbwebb.bth.se/unix-ovning](https://dbwebb.bth.se/unix-ovning).
+
+2. Packa upp filerna i din WSl installation, förslagsvis i hemmakatalog och i en katalog med namnet 'unix-ovning'. Om du vill göra det från terminalen kan först flytta zip-filen till din hemmakatalog i WSL, till exempel:
+
+    ```console title="Flytta övningsfilerna"
+    cd $HOME
+    mv /mnt/c/Users/klw/Downloads/unix-ovning.zip .
+    ```
+    Notera att mitt användarnamn är "klw". Byt ut det mot ditt egna. Sökvägen kan också variera beroende på operativsystem etc.
+
+3.  Packa sedan upp zip-filen med följande kommando:
+
+    ```console title="Packa upp zip-filen till en katalog"
+    unzip unix-ovning.zip -d unix-ovning
+    ```
+4. Nu har du katalogerna och filerna i en katalog som heter `unix-ovning` i din hemmakatalog.
+    ```console title="Flytta dig in i katalogen"
+    cd unix-ovning
+    ```
+</Steps>
+
+Nu är du redo att börja med övningen.
+
+<Steps>
+1. Ta reda på var du befinner dig i strukturen och utforska innehållet i katalogerna.
+2. Vilka är de tre första böckerna skrivna av Sci-fi författaren Asimov?
+3. Vilka är de sista två böckerna skrivna av Sci-fi författaren Clarke?
+4. Skapa en ny genre `deckare`.
+Lägg till "larsson.txt" och följande böcker:
+*Män som hatar kvinnor*,
+*Flickan som lekte med elden* och
+*Luftslottet som sprängdes*.
+5. Kopiera `rowling.txt` till katalogen `klassiker` och ta bort orginalet.
+6. Kopiera `clarke.txt` till katalogen `klassiker`.
+7. Byt namn på `tolkien.txt` till `tolkien-LOTR.txt`.
+8. Slå ihop de svenska och engelska klassikerna till en fil som heter `alla-klassiker.txt`.
+9. Lägg till boken `Pebble in the sky` till författaren `Asimov`.
+10. Ta bort katalogen `sci-fi` och allt innehåll. 
+11. Ta reda på sökvägen till `Moby-Dick`.
+12. Vilka böcker har `rowling` skrivit?
+</Steps>
+
+Om du tappar bort dig kan du alltid gå till din hemmakatalog med till exempel `cd $HOME`.

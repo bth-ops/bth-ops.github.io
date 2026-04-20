@@ -1,0 +1,185 @@
+---
+title: "Kmom05: ER logisk + Procedurer"
+description: Fortsätt mer ER-modellering och börja använda lagrade procedurer.
+revision:
+  2026-01-01: (A, mos) Första versionen. 
+---
+
+import Figure from '@components/CustomFigure.astro';
+import YouTube from '@components/YouTube.astro';
+
+{/* TODO
+* inbyggda integritetsregler?
+* Kan tid flyttas till ett kmom tidigare?
+* OUTER JOIN
+
+TILL KOMMANDE KMOM:
+
+* Serietabeller med tävling, utöka banken
+* Användare inloggning, koppling avatar till user, utöka banken
+* Skapa användare, tidsstämplar
+* (Order, lagerhantering, fakturering)
+
+*/}
+
+Vi fortsätter med ER-modellen och översätter den konceptuella modellen till en logisk modell som är anpassad för relationsdatabaser.
+
+Vi tittar på hur man kan programmera i en databas med lagrade procedurer. Dessa konstruktioner ger oss ökade möjligheter att formulera vår SQL-kod i mer avancerade programmeringskonstruktioner.
+
+Lagrade procedurer ger oss möjligheten till inkapsling av SQL-koden och att vi kan publicera ett API som är tillgängligt till de klienter som vill åt databasen. Detta gör att databaskoden och dess interna representation kan skyddas från klienterna i C# som enbart jobbar mot databasen via ett API bestående av lagrade procedurer.
+
+
+
+
+## Läs & Studera
+
+Här kan du på egen hand studera och förbereda dig inför övningar och uppgifter.
+
+
+
+### Föreläsning
+
+Titta på följande inspelade föreläsningar. Föreläsningarna kan innehålla tips om läsanvisningar.
+
+1. [Tidstämplar i databastabell](/website/laromaterial/forelasning/tidsstamplar) visar hur tidstämplar kan fungera i en databastabell och hur de kan få sitt värde per automatik.
+
+1. [Lagrade procedurer och programmera i databasen](/website/laromaterial/forelasning/lagrade-procedurer) introducerar framförallt hur man jobbar med lagrade procedurer i databasen för att kombinera variabel, SQL och mer sedvanliga programmeringskonstruktioner.
+
+1. [Databasmodellering - Översätt till relationsmodellen](/website/laromaterial/forelasning/er-modellering-logisk-modellering/) ger en översikt till hur du kan översätta en ER-modell från den konceptuella fasen till en databasmodell som matchar relationsmodellen i den logisk modelleringsfasen.
+
+
+
+### Kurslitteratur
+
+Läs följande:
+
+1. Databasteknik
+    * Kap 13. Integritetsvillkor
+    * Kap 15: Lagrade procedurer
+    * Kap 20: Tid i databaser
+
+1. [Boken har även en webbplats](http://www.databasteknik.se/webbkursen/) och vissa utdrag från boken finns där. Relevant för detta kmom är följande:
+    * [Integritetsvillkor](http://www.databasteknik.se/webbkursen/integritet/index.html)
+
+
+__ER-modellering__
+
+1. Databasteknik
+    * Kap 6: Översättning från ER-modellen till relationsmodellen
+
+1. [Boken har även en webbplats](http://www.databasteknik.se/webbkursen/) och vissa utdrag från boken finns där. Relevant för detta kmom är följande:
+    * [Översättning från ER-modellen till relationsmodellen](http://www.databasteknik.se/webbkursen/er2relationer/index.html)
+
+
+
+### Artiklar
+
+Kika igenom följande artiklar.
+
+1. I manualen för MariaDB kan du läsa om lagrade procedurer (stored procedures), det är främst följande kapitel som är relevanta, bekanta dig med dem, du kommer att träna på begreppen i kommande övningar.
+    * [Stored Procedures](https://mariadb.com/kb/en/stored-procedures/)
+    * [Stored Procedure Overview](https://mariadb.com/kb/en/stored-procedure-overview/)
+    * [TIMESTAMP](https://mariadb.com/kb/en/timestamp/)
+
+1. Fortsätt jobba igenom artikeln "[Kokbok för databasmodellering](https://dbwebb.se/kunskap/kokbok-for-databasmodellering)", den ger dig processen du skall följa. I detta kmom handlar det främst om att fokusera på logisk modellering.
+
+
+
+{/*
+### Ai som lärare (instuderingsfrågor)
+
+Här finns ett antal instuderingsfrågor som hjälper dig att finna information på egen hand för att träna på de koncept som är relevanta för detta kmom.
+
+<details>
+<summary>Instuderingsfrågor</summary>
+
+1. 
+
+Här är en [utskrift av när en frågesession genomförts](https://chatgpt.com/share/68bafa23-4b84-8005-a745-451d43258c9a). Dina svar kan skifta från de som visas. Var alltid kritisk till dina källor.
+
+</details>
+
+*/}
+
+
+
+## Övningar & Uppgifter
+
+Övningar är träning inför uppgifterna. Uppgifter skall utföras och redovisas.
+
+
+
+### Övningar
+
+Jobba igenom övningarna, de förbereder dig inför uppgifterna.
+
+1. Jobba igenom "[Lagrade procedurer i databas](/website/laromaterial/ovning/lagrade-procedurer/)" för att lära dig om lagrade procedurer och vad du kan göra med dem.
+
+1. Jobba igenom övningen "[Övning: CSharp med lagrade procedurer](/website/laromaterial/ovning/csharp-stored-procedure/)" för att lära dig hur du använder lagrade procedurer mot databasen från ett CSharp program.
+
+
+
+### Uppgifter
+
+Följande uppgifter skall utföras och resultatet skall redovisas.
+
+1. Jobba igenom uppgiften "[Uppgift: CSharp bank (kmom05)](/website/laromaterial/uppgift/kmom05-csharp/)" där du får jobba med lagrade procedurer.
+
+1. Jobba igenom uppgiften "[Uppgift: ER-modellering - logisk (kmom05)](/website/laromaterial/uppgift/kmom05-er-logisk/)".
+
+
+
+## Resultat & Redovisning
+
+Läs [instruktionen om hur du skall redovisa](/website/laromaterial/instruktion/resultat-och-redovisning).
+
+Se till att följande frågor besvaras i din redovisningstext i din rapportsida.
+
+* Hur gick det att komma igång med lagrade procedurer?
+* Hur är din syn på att "programmera" på detta viset i databasen, jämför med traditionell SQL som exponeras i klienten?
+* Skriv ett kort stycke (2-5 meningar) om lagrade procedurer där du förklarar begreppen (fördel, nackdel, användningsområde) för en som inte är insatt.
+
+* Hur går det med logisk modellering, kan du se att databasen växer fram? Vad är svårt att förstå och greppa med själva modelleringen, berätta om utmaningarna med modelleringen.
+
+* Vilken är din TIL för detta kmom?
+
+
+
+## Kommentarer & Noteringar
+
+<details>
+<summary>Plan för veckans genomgångar</summary>
+
+Följande är en plan för hur lärarteamet _kan_ lägga upp genomgångarna under veckan för detta kursmoment.
+
+
+
+### Måndag
+
+Första timmen:
+
+* Övning med lagrade procedurer, dels i SQL och dels i CSharp.
+
+Andra timmen:
+
+* Uppgift där man bygger terminalprogram som använder lagrade procedurer. Modellera själva databasen, skapa den med SQL och visa hur man använder den via lagrade procedurer.
+
+
+
+### Onsdag
+
+Första timmen:
+
+* ER-modellering, fokus logisk med ett exempel 
+
+
+Andra timmen:
+
+* Stöd för uppgiften med ER-modellering (logisk)
+
+
+### Torsdag
+
+* 
+
+</details>

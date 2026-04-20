@@ -1,0 +1,159 @@
+---
+title: "Kmom07: Funktioner"
+description: Vi lär oss om lagrade funktioner och vi börjar implementera databasen eshop med orderhantering.
+revision:
+  2026-02-27: (A, mos) Första versionen. 
+---
+
+import Figure from '@components/CustomFigure.astro';
+import YouTube from '@components/YouTube.astro';
+
+{/* TODO
+* Om man vill lägga in soft delete så kan man göra hantering för att lägga till, uppdatera, ta bort produkt.
+*/}
+
+Vi fortsätter med programmering i databasen, denna gången med "lagrade funktioner" som har en liknande struktur som lagrade procedurer och triggers.
+
+Vi fyller databasen eshop med innehåll och provkör den så att (delar av) den fungerar. Vi börjar med att lista innehållet från tabeller och vi gör CRUD (Create Read Update Delete) för att lägga till och redigera innehåll i tabellerna. Vi gör det via ett terminalprogram i CSharp.
+
+Vi tittar på begreppet om hur man normaliserar en databasmodell.
+
+
+
+## Läs & Studera
+
+Här kan du på egen hand studera och förbereda dig inför övningar och uppgifter.
+
+
+
+### Föreläsning
+
+Titta på följande inspelade föreläsningar. Föreläsningarna kan innehålla tips om läsanvisningar.
+
+1. [Funktioner och programmera i databasen](/website/laromaterial/forelasning/funktioner/) visar hur du kan programmera egnedefinierade funktioner i databasen och hur du kan använda dem i SELECT-satser. Funktioner kompletterar lagrade procedurer och triggers och har ett litet annat användningsområde.
+
+
+
+### Kurslitteratur
+
+Läs följande:
+
+1. Databasteknik
+    * Kap 9: Sammanfattning av SQL-kommandon
+    * Kap 20: Programmering i databaser
+
+Det finns ytterligare kapitel i boken som är relaterat till modellering. Läs översiktligt.
+
+1. Databasteknik
+    * Kap 3: Mer om datamodellering
+    * Kap 12: Normalformer och normalisering
+
+
+
+### Artiklar
+
+Kika igenom följande artiklar.
+
+1. Du har tidigare läst i manualen om lagrade procedurer (stored procedures), triggers och compound statements. Komplettera det med att nu läsa (i samma kapitel) om "funktioner" som skapas med CREATE FUNCTION. Läs översiktligt följande i manualen.
+    * [Stored Functions](https://mariadb.com/kb/en/stored-functions/)
+
+
+
+{/*
+### Ai som lärare (instuderingsfrågor)
+
+Här finns ett antal instuderingsfrågor som hjälper dig att finna information på egen hand för att träna på de koncept som är relevanta för detta kmom.
+
+<details>
+<summary>Instuderingsfrågor</summary>
+
+1. 
+
+Här är en [utskrift av när en frågesession genomförts](https://chatgpt.com/share/68bafa23-4b84-8005-a745-451d43258c9a). Dina svar kan skifta från de som visas. Var alltid kritisk till dina källor.
+
+</details>
+*/}
+
+
+
+## Övningar & Uppgifter
+
+Övningar är träning inför uppgifterna. Uppgifter skall utföras och redovisas.
+
+
+
+### Övningar
+
+Jobba igenom övningarna, de förbereder dig inför uppgifterna.
+
+1. Jobba igenom "[Övning: Lagrade funktioner i databas](/website/laromaterial/ovning/lagrade-funktioner/)" för att lära dig hur lagrade funktioner kompletterar procedurer och triggers.
+
+
+
+### Uppgifter
+
+Följande uppgifter skall utföras och resultatet skall redovisas.
+
+1. Jobba igenom "[Uppgift: EShop hantera order och orderdetaljer (kmom07)](/website/laromaterial/uppgift/kmom07-eshop/)" för att bygga innehåll och orderhantering till din Eshop.
+
+
+
+## Resultat & Redovisning
+
+Läs [instruktionen om hur du skall redovisa](/website/laromaterial/instruktion/resultat-och-redovisning).
+
+Se till att följande frågor besvaras i din redovisningstext i din rapportsida.
+
+* Hur gick det att komma igång med lagrade funktioner?
+* Skriv ett kort stycke (2-5 meningar med egna ord) om funktioner där du förklarar begreppen (fördel, nackdel, användningsområde) för en som inte är insatt.
+
+* Vilket sätt valde du att fylla databasen, blev det INSERT, LOAD FROM INFILE eller tom excelark? Hur tänkte du kring detta?
+
+* Hur flöt arbetet när du byggde terminalprogrammet i CSharp för din Eshop med lagrade procedurer, funktioner och triggers? Berätta hur det gick och vad du lärde dig.
+
+* Kan du kort förklara vad begreppet normalisering handlar om, (2-5 meningar med egna ord), för någon som ännu inte lärt sig det?
+
+* Vilken är din TIL för detta kmom?
+
+
+
+## Kommentarer & Noteringar
+
+<details>
+<summary>Plan för veckans genomgångar</summary>
+
+Följande är en plan för hur lärarteamet _kan_ lägga upp genomgångarna under veckan för detta kursmoment.
+
+
+
+### Måndag
+
+Första timmen:
+
+* Jobba igenom övningen med funktioner.
+
+Andra timmen:
+
+* LOAD DATA INFILE och att fylla databasen från excelark.
+* Self join employee, boss OUTER JOIN employee
+* Soft delete
+
+{/*
+* subquery
+* Lagerhantering, INSERT ON DUPLICATE KEY UPDATE (nästa) (finns även i ordern)
+*/}
+
+
+
+### Onsdag
+
+* Normalisering teori
+* Normalisering med exempel
+
+
+
+### Torsdag
+
+* 
+
+</details>
