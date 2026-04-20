@@ -6,7 +6,7 @@ import starlightImageZoom from 'starlight-image-zoom'
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://bth-operations.github.io/',
+	site: 'https://bth-ops.github.io/',
 	base: '/',
 	markdown: {
 		remarkPlugins: [remarkReadingTime],
