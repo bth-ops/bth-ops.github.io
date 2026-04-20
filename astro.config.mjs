@@ -6,8 +6,8 @@ import starlightImageZoom from 'starlight-image-zoom'
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://bth-databas.github.io/website/',
-	base: '/website',
+	site: 'https://bth-ops.github.io/',
+	base: '/',
 	markdown: {
 		remarkPlugins: [remarkReadingTime],
 	},
@@ -16,7 +16,7 @@ export default defineConfig({
 			plugins: [
 				starlightImageZoom(),
 			],
-			title: 'Kursen databas',
+			title: 'Kursen ops',
 			favicon: 'favicon.png',
 			logo: {
 				//src: './src/assets/leaf_256x256.png',
@@ -26,10 +26,10 @@ export default defineConfig({
 				'./src/styles/dbwebb.css',
 			],
 			editLink: {
-				baseUrl: 'https://github.com/bth-databas/website/tree/main',
+				baseUrl: 'https://github.com/bth-ops/bth-ops.github.io/tree/main',
 			},
 			social: [
-    			{ icon: 'github', label: 'GitHub', href: 'https://github.com/bth-databas/website' }
+    			{ icon: 'github', label: 'GitHub', href: 'https://github.com/bth-ops/bth-ops.github.io' }
 			],
 			head: [
 				{
